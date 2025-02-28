@@ -15,7 +15,7 @@ public class Utility{
         "High Card"
     };
 
-    private static String[] suits  = {"♠","♥","♣", "♦"};
+    private static String[] suits  = {"♠","♥","♣","♦"};
     private static String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
 
     public static String[] getRanks(){return ranks;}

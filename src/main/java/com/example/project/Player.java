@@ -16,21 +16,54 @@ public class Player{
     public ArrayList<Card> getAllCards(){return allCards;}
 
     public void addCard(Card c){
-        
+        hand.add(c);
     }
 
-    public String playHand(ArrayList<Card> communityCards){      
+    public String playHand(ArrayList<Card> communityCards){      //remove the cards too
+        allCards = new ArrayList<Card>();allCards.addAll(communityCards);allCards.addAll(hand); // Initializes and adds the community + player's hand to the list
+
+        ArrayList<Integer> rankFreq = findRankingFrequency();
+        // IDX values and their corresponding ranks
+        // 0=2,1=3,2=4,3=5,4=6,5=7,6=8,7=9,8=10,9=J,10=Q,11=K,12=A
+        ArrayList<Integer> suitFreq = findSuitFrequency();
+        // IDX values and their corresponding suits
+        // 0=♠,1=♥,2=♣,3=♦
+
+        for (Integer suits : suitFreq) {
+            if (suits >= 5) {
+
+            }
+        }
+
         return "Nothing";
     }
 
-    public void sortAllCards(){} 
+    public void sortAllCards(){
+
+    } 
 
     public ArrayList<Integer> findRankingFrequency(){
-        return new ArrayList<>(); 
+        ArrayList<Integer> freq = new ArrayList<>(13);
+        for (int currentRank = 0; currentRank < ranks.length; currentRank ++) {
+            for (int inDeck = 0; inDeck < allCards.size(); inDeck++) {
+                if (allCards.get(inDeck).getRank().equals(ranks[currentRank])) {
+                    freq.set(currentRank, freq.get(currentRank) + 1);
+                }
+            }
+        }
+        return freq; 
     }
 
     public ArrayList<Integer> findSuitFrequency(){
-        return new ArrayList<>(); 
+        ArrayList<Integer> freq = new ArrayList<>(13);
+        for (int currentSuit = 0; currentSuit < suits.length; currentSuit ++) {
+            for (int inDeck = 0; inDeck < allCards.size(); inDeck++) {
+                if (allCards.get(inDeck).getSuit().equals(ranks[currentSuit])) {
+                    freq.set(currentSuit, freq.get(currentSuit) + 1);
+                }
+            }
+        }
+        return freq;
     }
 
    
