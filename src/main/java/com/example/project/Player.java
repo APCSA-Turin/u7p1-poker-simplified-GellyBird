@@ -29,6 +29,7 @@ public class Player{
         // IDX values and their corresponding suits
         // 0=♠,1=♥,2=♣,3=♦
 
+        // --- Hands that rely on the suit being the same ---
         for (Integer suits : suitFreq) {
             String cardsAvailable = "";
             if (suits >= 5) {
@@ -49,9 +50,35 @@ public class Player{
                 }
             } 
         }
+
+        // --- Hands that rely on two/three/four of a kind ---
+        int numberOfPairs = 0;
+        int numberOfTrios = 0; // should always be 0 or 1
         for (Integer ranks : rankFreq) {
-            
+            if (ranks == 4) {
+                return "Four of a Kind";
+            }
+            if (ranks == 3) {
+                numberOfTrios ++;
+            }
+            if (ranks == 2) {
+                numberOfPairs ++;
+            }
         }
+        if (numberOfPairs == 1 && numberOfTrios == 1) {
+            return "Full House";
+        } else if (numberOfTrios == 1 && numberOfPairs == 0) {
+            return "Three of a Kind";
+        } else if (numberOfTrios == 0 && numberOfPairs == 2) {
+            return "Two Pair";
+        } else if (numberOfPairs == 1) {
+            return "Pair";
+        }
+        numberOfPairs = 0;
+        numberOfTrios = 0;
+
+    // --- Other (High Card & Straight) ---
+    
         return "Nothing";
     }
 
