@@ -24,7 +24,7 @@ public class Deck{
     }
 
     public  void shuffleDeck(){ //You can use the Collections library or another method. You do not have to create your own shuffle algorithm
-    Collections.shuffle(cards);
+    Collections.shuffle(cards); //is .shuffle banned for this?? it says you can use collections,,
     }
 
     public  Card drawCard(){
